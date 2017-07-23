@@ -2,3 +2,6 @@ node_modules
 mobile/platforms
 mobile/plugins
 mobile/emulator
+mobile/node_modules
+.idea
+mobile/.idea
