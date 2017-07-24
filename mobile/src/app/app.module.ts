@@ -12,6 +12,8 @@ import { SignupPage } from '../pages/signup/signup';
 import { LocationPage } from '../pages/location/location';
 import { CheckoutPage } from '../pages/checkout/checkout';
 import { SelectStorePage } from '../pages/select-store/select-store';
+import { FoodCenterPage } from '../pages/food-center/food-center';
+import { FoodStallPage } from '../pages/food-stall/food-stall';
 import { MapPage } from '../pages/map/map';
 
 
@@ -32,6 +34,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     LocationPage,
     CheckoutPage,
     SelectStorePage,
+    FoodCenterPage,
+    FoodStallPage,
     MapPage
   ],
   imports: [
@@ -49,6 +53,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     LocationPage,
     CheckoutPage,
     SelectStorePage,
+    FoodCenterPage,
+    FoodStallPage,
     MapPage
   ],
   providers: [

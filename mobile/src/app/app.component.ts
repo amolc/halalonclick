@@ -12,6 +12,8 @@ import { SignupPage } from '../pages/signup/signup';
 import { LocationPage } from '../pages/location/location';
 import { CheckoutPage } from '../pages/checkout/checkout';
 import { SelectStorePage } from '../pages/select-store/select-store';
+import { FoodCenterPage } from '../pages/food-center/food-center';
+import { FoodStallPage } from '../pages/food-stall/food-stall';
 import { MapPage } from '../pages/map/map';
 @Component({
   templateUrl: 'app.html'
@@ -36,6 +38,8 @@ export class MyApp {
       { title: 'Location', component: LocationPage },
       { title: 'Checkout', component: CheckoutPage },
       { title: 'SelectStore', component: SelectStorePage },
+      { title: 'Food Center', component: FoodCenterPage },
+      { title: 'Food Stall', component: FoodStallPage },
       //{ title: 'MapPage', component: MapPage }
     ];
 
