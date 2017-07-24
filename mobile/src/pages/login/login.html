@@ -18,8 +18,8 @@
 
 <ion-content padding>
   <ion-list>
-    <div class="logo">
-      <img src="assets/img/appicon.svg">
+    <div>
+      <h2 center text-center>Halalonclick</h2>
     </div>
 
     <form #loginForm="ngForm" novalidate>
@@ -45,10 +45,15 @@
         <ion-col>
           <button ion-button (click)="onLogin(loginForm)" type="submit" color="primary" block>Login</button>
         </ion-col>
-        <ion-col>
-          <button ion-button (click)="onSignup()" color="light" block>Signup</button>
-        </ion-col>
+        <!--<ion-col>-->
+          <!--<button ion-button (click)="onSignup()" color="light" block>Signup</button>-->
+        <!--</ion-col>-->
       </ion-row>
+      <hr/>
+      <p center text-center>
+        Forgot Password? <br/>
+        New to Halalonclick? Register <a href (click)="onSignup()" >here</a>
+      </p>
     </form>
   </ion-list>
 </ion-content>

@@ -19,8 +19,8 @@
 <ion-content padding>
 
   <ion-list>
-    <div class="logo">
-      <img src="assets/img/appicon.svg">
+    <div>
+      <h2 center text-center>Halalonclick</h2>
     </div>
 
     <form #signupForm="ngForm" novalidate>
@@ -59,10 +59,15 @@
       <p [hidden]="confirmPassword.valid || submitted == false" color="danger" padding-left>
         Confirm Password is required
       </p>
-
-      <div padding>
-        <button ion-button (click)="onSignup(signupForm)" type="submit" block color="primary">Create</button>
-      </div>
+      <ion-row responsive-sm>
+        <ion-col>
+          <button ion-button (click)="onSignup(signupForm)" type="submit" block color="primary">Sign Up</button>
+        </ion-col>
+      </ion-row>
+      <hr/>
+      <p center text-center>
+        Already have an account? Log in <a href (click)="onLogin()" >here</a>
+      </p>
     </form>
   </ion-list>
 </ion-content>
