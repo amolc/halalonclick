@@ -12,6 +12,10 @@ import { SignupPage } from '../pages/signup/signup';
 import { LocationPage } from '../pages/location/location';
 import { CheckoutPage } from '../pages/checkout/checkout';
 import { SelectStorePage } from '../pages/select-store/select-store';
+import { MapPage } from '../pages/map/map';
+
+
+import { GoogleMaps } from '@ionic-native/google-maps';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -27,7 +31,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SignupPage,
     LocationPage,
     CheckoutPage,
-    SelectStorePage
+    SelectStorePage,
+    MapPage
   ],
   imports: [
     BrowserModule,
@@ -43,12 +48,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SignupPage,
     LocationPage,
     CheckoutPage,
-    SelectStorePage
+    SelectStorePage,
+    MapPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    GoogleMaps
   ]
 })
 export class AppModule {}

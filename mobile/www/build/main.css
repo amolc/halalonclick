@@ -25198,3 +25198,8 @@ ion-navbar.toolbar {
     padding-top: calc(16px + 20px);
   }
 }
+
+page-map #map {
+  width: 100%;
+  height: 100%;
+}

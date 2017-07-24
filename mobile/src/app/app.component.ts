@@ -12,6 +12,7 @@ import { SignupPage } from '../pages/signup/signup';
 import { LocationPage } from '../pages/location/location';
 import { CheckoutPage } from '../pages/checkout/checkout';
 import { SelectStorePage } from '../pages/select-store/select-store';
+import { MapPage } from '../pages/map/map';
 @Component({
   templateUrl: 'app.html'
 })
@@ -34,7 +35,8 @@ export class MyApp {
       { title: 'Signup', component: SignupPage },
       { title: 'Location', component: LocationPage },
       { title: 'Checkout', component: CheckoutPage },
-      { title: 'SelectStore', component: SelectStorePage }
+      { title: 'SelectStore', component: SelectStorePage },
+      //{ title: 'MapPage', component: MapPage }
     ];
 
   }
