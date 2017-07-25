@@ -4,20 +4,21 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+//import { ListPage } from '../pages/list/list';
 
 import { WelcomePage } from '../pages/welcome/welcome';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { LocationPage } from '../pages/location/location';
 import { CheckoutPage } from '../pages/checkout/checkout';
+import { OrderPage } from '../pages/order/order';
 import { SelectStorePage } from '../pages/select-store/select-store';
 import { FoodCenterPage } from '../pages/food-center/food-center';
 import { FoodStallPage } from '../pages/food-stall/food-stall';
-import { MapPage } from '../pages/map/map';
+//import { MapPage } from '../pages/map/map';
 
 
-import { GoogleMaps } from '@ionic-native/google-maps';
+//import { GoogleMaps } from '@ionic-native/google-maps';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -26,17 +27,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
+    //ListPage,
 
     WelcomePage,
     LoginPage,
     SignupPage,
     LocationPage,
     CheckoutPage,
+    OrderPage,
     SelectStorePage,
     FoodCenterPage,
-    FoodStallPage,
-    MapPage
+    FoodStallPage
   ],
   imports: [
     BrowserModule,
@@ -46,22 +47,22 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
+    //ListPage,
     WelcomePage,
     LoginPage,
     SignupPage,
     LocationPage,
     CheckoutPage,
+    OrderPage,
     SelectStorePage,
     FoodCenterPage,
-    FoodStallPage,
-    MapPage
+    FoodStallPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    GoogleMaps
+    //GoogleMaps
   ]
 })
 export class AppModule {}

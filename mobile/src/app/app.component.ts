@@ -4,7 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+//import { ListPage } from '../pages/list/list';
 
 import { WelcomePage } from '../pages/welcome/welcome';
 import { LoginPage } from '../pages/login/login';
@@ -14,14 +14,15 @@ import { CheckoutPage } from '../pages/checkout/checkout';
 import { SelectStorePage } from '../pages/select-store/select-store';
 import { FoodCenterPage } from '../pages/food-center/food-center';
 import { FoodStallPage } from '../pages/food-stall/food-stall';
-import { MapPage } from '../pages/map/map';
+import { OrderPage } from '../pages/order/order';
+//import { MapPage } from '../pages/map/map';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = WelcomePage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -30,13 +31,14 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage },
+      //{ title: 'Home', component: HomePage },
+      //{ title: 'List', component: ListPage },
       { title: 'Welcome', component: WelcomePage },
       { title: 'Login', component: LoginPage },
       { title: 'Signup', component: SignupPage },
       { title: 'Location', component: LocationPage },
       { title: 'Checkout', component: CheckoutPage },
+      { title: 'Order', component: OrderPage },
       { title: 'SelectStore', component: SelectStorePage },
       { title: 'Food Center', component: FoodCenterPage },
       { title: 'Food Stall', component: FoodStallPage },
@@ -59,4 +61,5 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
 }

@@ -25221,6 +25221,10 @@ page-checkout ion-card .card-subtitle {
   color: #333;
 }
 
+page-checkout ion-label {
+  color: #000 !important;
+}
+
 page-food-center ion-card {
   position: relative;
   text-align: center;
@@ -25243,6 +25247,36 @@ page-food-center ion-card .card-subtitle {
   color: #333;
 }
 
+page-food-stall ion-card {
+  position: relative;
+  text-align: center;
+}
+
+page-food-stall ion-card .card-title {
+  position: absolute;
+  top: 70%;
+  font-size: 2.0em;
+  width: 100%;
+  font-weight: bold;
+  color: #000;
+}
+
+page-food-stall ion-card .card-subtitle {
+  font-size: 1.0em;
+  position: absolute;
+  top: 86%;
+  width: 100%;
+  color: #333;
+}
+
+page-food-stall ion-list ion-col {
+  font-size: 14px;
+}
+
+page-food-stall ion-list ion-col button span {
+  font-size: 10px !important;
+}
+
 page-location ion-card.map {
   position: relative;
   text-align: center;
@@ -25263,9 +25297,4 @@ page-location ion-card.map .card-subtitle {
   top: 86%;
   width: 100%;
   color: #333;
-}
-
-page-map #map {
-  width: 100%;
-  height: 100%;
 }

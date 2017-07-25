@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { FoodStallPage } from '../food-stall/food-stall';
+
 /**
  * Generated class for the FoodCenterPage page.
  *
@@ -19,6 +21,9 @@ export class FoodCenterPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FoodCenterPage');
+  }
+  onSelectFoodCenter() {
+    this.navCtrl.push(FoodStallPage);
   }
 
 }

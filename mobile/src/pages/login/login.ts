@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { SelectStorePage } from '../select-store/select-store';
+import { SignupPage } from '../signup/signup';
+
 /**
  * Generated class for the LoginPage page.
  *
@@ -20,6 +23,13 @@ export class LoginPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+  }
+
+  onSignup() {
+    this.navCtrl.push(SignupPage);
+  }
+  onLogin() {
+    this.navCtrl.push(SelectStorePage);
   }
 
 }

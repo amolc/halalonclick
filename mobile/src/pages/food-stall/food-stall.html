@@ -16,6 +16,32 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <ion-card>
+    <img src="assets/bg-food.png"/>
+    <div class="card-title">BREADGANG SG</div>
+    <div class="card-subtitle">Mexican - Western</div>
+  </ion-card>
+  <div>
+    <p text-center>
+      4"00PM - 9"00PM (Last Order At 8"30PM)
+    </p>
+    <p text-center>
+      235, Jurong East St 21, Singapore 600235
+    </p>
+  </div>
 
+<!--</ion-content>-->
+<!--<ion-content>-->
+  <ion-list no-lines>
+    <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
+
+      <ion-row>
+        <ion-col col-4>{{ item.name }}</ion-col>
+        <ion-col col-2>-1+</ion-col>
+        <ion-col col-2>${{ item.price }}</ion-col>
+        <ion-col col-4><button color="primary" ion-button small round>Add to card</button></ion-col>
+      </ion-row>
+    </button>
+  </ion-list>
 </ion-content>
