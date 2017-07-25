@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { CheckoutPage } from '../checkout/checkout';
+
 /**
  * Generated class for the OrderPage page.
  *
@@ -20,5 +22,17 @@ export class OrderPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrderPage');
   }
+  items = [
+    { name: 'Pokémon Yellow', price: 5.20},
+    { name: 'Super Metroid', price: 5.20},
+    { name: 'Mega Man X', price: 5.20},
+    { name: 'Star Fox', price: 5.20},
+  ];
+  itemSelected = function(item){
+    console.log(item)
+  }
+  onCheckout = function(){
+    this.navCtrl.push(CheckoutPage);
 
+  }
 }

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { OrderPage } from '../order/order';
+
 /**
  * Generated class for the FoodStallPage page.
  *
@@ -34,6 +36,11 @@ export class FoodStallPage {
     { name: 'Donkey Kong III', price: 5.20}
   ];
   itemSelected = function(item){
-    console.log(item)
+    console.log(item);
+    this.onAddToCart();
+  }
+  onAddToCart= function(){
+    this.navCtrl.push(OrderPage);
+
   }
 }

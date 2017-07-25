@@ -25298,3 +25298,33 @@ page-location ion-card.map .card-subtitle {
   width: 100%;
   color: #333;
 }
+
+page-order ion-card {
+  position: relative;
+  text-align: center;
+}
+
+page-order ion-card .card-title {
+  position: absolute;
+  top: 70%;
+  font-size: 2.0em;
+  width: 100%;
+  font-weight: bold;
+  color: #fff;
+}
+
+page-order ion-card .card-subtitle {
+  font-size: 1.0em;
+  position: absolute;
+  top: 86%;
+  width: 100%;
+  color: #333;
+}
+
+page-order ion-list ion-col {
+  font-size: 14px;
+}
+
+page-order ion-list ion-col button span {
+  font-size: 10px !important;
+}

@@ -107,6 +107,7 @@ FoodCenterPage = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FoodStallPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__order_order__ = __webpack_require__(199);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -116,6 +117,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 /**
@@ -143,6 +145,10 @@ var FoodStallPage = (function () {
         ];
         this.itemSelected = function (item) {
             console.log(item);
+            this.onAddToCart();
+        };
+        this.onAddToCart = function () {
+            this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__order_order__["a" /* OrderPage */]);
         };
     }
     FoodStallPage.prototype.ionViewDidLoad = function () {
@@ -152,11 +158,12 @@ var FoodStallPage = (function () {
 }());
 FoodStallPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-food-stall',template:/*ion-inline-start:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/food-stall/food-stall.html"*/'<!--\n  Generated template for the FoodStallPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Food-stall</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-card>\n    <img src="assets/bg-food.png"/>\n    <div class="card-title">BREADGANG SG</div>\n    <div class="card-subtitle">Mexican - Western</div>\n  </ion-card>\n  <div>\n    <p text-center>\n      4"00PM - 9"00PM (Last Order At 8"30PM)\n    </p>\n    <p text-center>\n      235, Jurong East St 21, Singapore 600235\n    </p>\n  </div>\n\n<!--</ion-content>-->\n<!--<ion-content>-->\n  <ion-list no-lines>\n    <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">\n\n      <ion-row>\n        <ion-col col-4>{{ item.name }}</ion-col>\n        <ion-col col-2>-1+</ion-col>\n        <ion-col col-2>${{ item.price }}</ion-col>\n        <ion-col col-4><button color="primary" ion-button small round>Add to card</button></ion-col>\n      </ion-row>\n    </button>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/food-stall/food-stall.html"*/,
+        selector: 'page-food-stall',template:/*ion-inline-start:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/food-stall/food-stall.html"*/'<!--\n  Generated template for the FoodStallPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Food-stall</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-card>\n    <img src="assets/bg-food.png"/>\n    <div class="card-title">BREADGANG SG</div>\n    <div class="card-subtitle">Mexican - Western</div>\n  </ion-card>\n  <div>\n    <p text-center>\n      4"00PM - 9"00PM (Last Order At 8"30PM)\n    </p>\n    <p text-center>\n      235, Jurong East St 21, Singapore 600235\n    </p>\n  </div>\n\n<!--</ion-content>-->\n<!--<ion-content>-->\n  <ion-list no-lines>\n    <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">\n\n      <ion-row>\n        <ion-col col-4>{{ item.name }}</ion-col>\n        <ion-col col-2>-1+</ion-col>\n        <ion-col col-2>${{ item.price }}</ion-col>\n        <ion-col col-4><button color="primary" ion-button small round (click)="onAddToCart()">Add to card</button></ion-col>\n      </ion-row>\n    </button>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/food-stall/food-stall.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]) === "function" && _b || Object])
 ], FoodStallPage);
 
+var _a, _b;
 //# sourceMappingURL=food-stall.js.map
 
 /***/ }),
@@ -297,6 +304,7 @@ CheckoutPage = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OrderPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__checkout_checkout__ = __webpack_require__(198);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -306,6 +314,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 /**
@@ -318,6 +327,18 @@ var OrderPage = (function () {
     function OrderPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.items = [
+            { name: 'Pokémon Yellow', price: 5.20 },
+            { name: 'Super Metroid', price: 5.20 },
+            { name: 'Mega Man X', price: 5.20 },
+            { name: 'Star Fox', price: 5.20 },
+        ];
+        this.itemSelected = function (item) {
+            console.log(item);
+        };
+        this.onCheckout = function () {
+            this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__checkout_checkout__["a" /* CheckoutPage */]);
+        };
     }
     OrderPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad OrderPage');
@@ -326,11 +347,12 @@ var OrderPage = (function () {
 }());
 OrderPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-order',template:/*ion-inline-start:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/order/order.html"*/'<!--\n  Generated template for the OrderPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Order</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/order/order.html"*/,
+        selector: 'page-order',template:/*ion-inline-start:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/order/order.html"*/'<!--\n  Generated template for the OrderPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Order</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-card>\n    <img src="assets/bg-food.png"/>\n    <div class="card-title">Your Order</div>\n  </ion-card>\n  <div>\n    <p text-center>\n      25-30 minutes\n    </p>\n    <p text-center>\n      116, Jurong East Street 21, Singapore 600116\n    </p>\n  </div>\n\n  <!--</ion-content>-->\n  <!--<ion-content>-->\n  <ion-card>\n    <ion-card-header>\n      Order Summary\n    </ion-card-header>\n    <ion-list no-lines>\n      <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">\n\n        <ion-row>\n          <ion-col col-4>{{ item.name }}</ion-col>\n          <ion-col col-2>-1+</ion-col>\n          <ion-col col-4><button color="danger" ion-button small round>remove</button></ion-col>\n          <ion-col col-2 text-right>${{ item.price }}</ion-col>\n        </ion-row>\n      </button>\n      <button ion-item>\n\n        <ion-row >\n          <ion-col text-right offset-6 col-4>\n            Subtotal\n          </ion-col>\n          <ion-col text-right col-2>$105.50</ion-col>\n        </ion-row>\n        <ion-row >\n          <ion-col text-right offset-6 col-4>\n            Delivery Fee\n          </ion-col>\n          <ion-col text-right col-2>$5.00</ion-col>\n        </ion-row>\n        <hr/>\n        <ion-row >\n          <ion-col text-right offset-6 col-4>\n            <b>Total</b>\n          </ion-col>\n          <ion-col text-right col-2><b>$110.0</b></ion-col>\n        </ion-row>\n      </button>\n    </ion-list>\n  </ion-card>\n  <div padding>\n    <button ion-button color="secondary" full (click)="onCheckout()">Proceed to checkout</button>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/order/order.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]) === "function" && _b || Object])
 ], OrderPage);
 
+var _a, _b;
 //# sourceMappingURL=order.js.map
 
 /***/ }),

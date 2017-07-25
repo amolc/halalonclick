@@ -16,6 +16,61 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <ion-card>
+    <img src="assets/bg-food.png"/>
+    <div class="card-title">Your Order</div>
+  </ion-card>
+  <div>
+    <p text-center>
+      25-30 minutes
+    </p>
+    <p text-center>
+      116, Jurong East Street 21, Singapore 600116
+    </p>
+  </div>
 
+  <!--</ion-content>-->
+  <!--<ion-content>-->
+  <ion-card>
+    <ion-card-header>
+      Order Summary
+    </ion-card-header>
+    <ion-list no-lines>
+      <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
+
+        <ion-row>
+          <ion-col col-4>{{ item.name }}</ion-col>
+          <ion-col col-2>-1+</ion-col>
+          <ion-col col-4><button color="danger" ion-button small round>remove</button></ion-col>
+          <ion-col col-2 text-right>${{ item.price }}</ion-col>
+        </ion-row>
+      </button>
+      <button ion-item>
+
+        <ion-row >
+          <ion-col text-right offset-6 col-4>
+            Subtotal
+          </ion-col>
+          <ion-col text-right col-2>$105.50</ion-col>
+        </ion-row>
+        <ion-row >
+          <ion-col text-right offset-6 col-4>
+            Delivery Fee
+          </ion-col>
+          <ion-col text-right col-2>$5.00</ion-col>
+        </ion-row>
+        <hr/>
+        <ion-row >
+          <ion-col text-right offset-6 col-4>
+            <b>Total</b>
+          </ion-col>
+          <ion-col text-right col-2><b>$110.0</b></ion-col>
+        </ion-row>
+      </button>
+    </ion-list>
+  </ion-card>
+  <div padding>
+    <button ion-button color="secondary" full (click)="onCheckout()">Proceed to checkout</button>
+  </div>
 </ion-content>
