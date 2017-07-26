@@ -7,3 +7,4 @@ mobile/node_modules
 mobile/.idea
 .env
 /api/.env
+/api/npm-debug.log
