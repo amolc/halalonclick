@@ -5,3 +5,5 @@ mobile/emulator
 mobile/node_modules
 .idea
 mobile/.idea
+.env
+/api/.env
