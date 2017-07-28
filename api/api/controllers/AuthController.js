@@ -16,10 +16,10 @@ module.exports = {
 
     signup: function (req, res) {
         User.create({
-            email: 'nusratjahantamann1a@80startups.com',
-            firstName: 'Nusrat Jahan',
-            lastName: 'Tamanna',
-            password: 'limon'
+            email: req.body.email,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            password: req.body.password
         }).then(data => {
             res.json(data);
         }).catch(err => {
@@ -28,16 +28,11 @@ module.exports = {
     },
     authenticate: function (req, res) {
         User.findOne(
-            {where: {email: 'nusratjahantamanna@80startups.com'}}
+            {where: {email: req.body.email}}
         ).then(user => {
-                res.json(user.comparePasswordSync('1234'))
-                //user.comparePassword('1234', function (data, isMatch) {
-                //    res.json(isMatch)
-                //})
-                //.then(data => {
-                //        res.json(data)
-                //    })
-
+                res.json(user.comparePasswordSync(req.body.password))
+            }).catch(err => {
+                res.json(err);
             })
     }
 };

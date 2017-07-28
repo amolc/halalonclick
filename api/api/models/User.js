@@ -68,9 +68,9 @@ User.sync({force: true}).then(() => {
     // Table created
 
     return User.create({
-        email: 'nusratjahantamanna@80startups.com',
-        firstName: 'Nusrat Jahan',
-        lastName: 'Tamanna',
+        email: 'mahfuz@halalonclick.com',
+        firstName: 'Mahfuzur',
+        lastName: 'Rahman',
         password: '1234'
     });
 });
