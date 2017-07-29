@@ -1,4 +1,7 @@
 var User = require('./../models/User');
+var jwt = require('jsonwebtoken');
+const jwtSecret = process.env.JWT_SECRET;
+
 //var Transaction = require('./../models/Transaction');
 //var jwt = require('jsonwebtoken');
 //const jwtSecret = require('./../../config/config').secret;
@@ -8,12 +11,6 @@ var User = require('./../models/User');
 //var fx = require('money');
 
 module.exports = {
-    ping: function (req, res) {
-        User.findOne().then(user => {
-            res.json(user);
-        });
-    },
-
     signup: function (req, res) {
         User.create({
             email: req.body.email,
@@ -27,10 +24,34 @@ module.exports = {
         })
     },
     authenticate: function (req, res) {
+        if (!req.body.email || typeof req.body.email !== 'string') {
+            return res.status(400).json({
+                status: 400,
+                error: 'email field is required and type string'
+            });
+        }
+        if (!req.body.password || typeof req.body.password !== 'string') {
+            return res.status(400).json({
+                status: 400,
+                result: 'password field is required and type string'
+            });
+        }
+
         User.findOne(
             {where: {email: req.body.email}}
         ).then(user => {
-                res.json(user.comparePasswordSync(req.body.password))
+                if (!user || !user.comparePasswordSync(req.body.password)) {
+                    return res.status(404).json({
+                        status: 404,
+                        result: 'email or password incorrect'
+                    });
+                }
+                var token = jwt.sign({uid: user.id}, jwtSecret, {
+                    expiresIn: 60 * 60 * 24 // expires in 24 hours
+                });
+                res.status(200).json({
+                    token: token
+                })
             }).catch(err => {
                 res.json(err);
             })
