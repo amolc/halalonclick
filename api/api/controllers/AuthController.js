@@ -12,6 +12,8 @@ const jwtSecret = process.env.JWT_SECRET;
 
 module.exports = {
     signup: function (req, res) {
+
+
         User.create({
             email: req.body.email,
             firstName: req.body.firstName,
