@@ -22,7 +22,7 @@ import { OrderPage } from '../pages/order/order';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = WelcomePage;
+  rootPage: any = SelectStorePage;
 
   pages: Array<{title: string, component: any}>;
 
