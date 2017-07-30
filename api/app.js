@@ -31,7 +31,7 @@ app.all('*', function(req, res, next) {
 });
 
 
-app.use('/', index);
+app.use('/', express.static(path.join(__dirname, '../mobile/www')));
 app.use('/api', apiRoutes);
 
 // catch 404 and forward to error handler

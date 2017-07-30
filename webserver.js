@@ -1,3 +1,6 @@
+
+var io = require('io');
+var vhost = require('vhost');
 var connect = require('connect');
 var app = connect();
 var bodyParser = require('body-parser');
@@ -6,7 +9,7 @@ var serveStatic = require('serve-static');
 var mobile = connect();
 
 
-app = require('./api/api');
+//app = require('./api');
 var http = require("http").createServer(app);
 
 mobile.use(serveStatic('mobile/www'));
