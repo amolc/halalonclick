@@ -1,10 +1,16 @@
 var Menu = require('./../models/Menu');
 
 module.exports = {
-    getProfile: function (req, res) {
-        User.findOne({where: { id: req.uid}})
-        .then(user => {
-                res.json(200, user);
+    getMenuList: function (req, res) {
+        Menu.findAll({where: { foodStallId: req.params.foodStallId}})
+        .then(data => {
+                res.json(200, data);
+            })
+    },
+    getMenu: function (req, res) {
+        Menu.findAll({where: { foodStallId: req.params.foodStallId, id: req.params.menuId}})
+        .then(data => {
+                res.json(200, data);
             })
     }
 };

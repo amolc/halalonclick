@@ -40,7 +40,10 @@ export class FoodCenterPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad FoodCenterPage');
   }
-  onSelectFoodCenter() {
-    this.navCtrl.push(FoodStallPage);
+  onSelectFoodCenter(foodStallObj) {
+
+    this.navCtrl.push(FoodStallPage,{
+      foodStallObj:foodStallObj
+    });
   }
 }

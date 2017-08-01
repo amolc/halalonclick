@@ -19,22 +19,22 @@
 <ion-content>
   <ion-card>
     <img src="assets/bg-food.png"/>
-    <div class="card-title">BREADGANG SG</div>
-    <div class="card-subtitle">Mexican - Western</div>
+    <div class="card-title">{{foodStallObj.name}}</div>
+    <div class="card-subtitle">{{foodStallObj.foodType}}</div>
   </ion-card>
   <div>
     <p text-center>
-      4"00PM - 9"00PM (Last Order At 8"30PM)
+      {{foodStallObj.hours}}
     </p>
     <p text-center>
-      235, Jurong East St 21, Singapore 600235
+      {{foodStallObj.address}}
     </p>
   </div>
 
 <!--</ion-content>-->
 <!--<ion-content>-->
   <ion-list no-lines>
-    <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
+    <button ion-item *ngFor="let item of menuList" (click)="itemSelected(item)">
 
       <ion-row>
         <ion-col col-4>{{ item.name }}</ion-col>

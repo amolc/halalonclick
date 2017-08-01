@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
 import { OrderPage } from '../order/order';
 
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { AuthHttp } from 'angular2-jwt';
+import { AppSettings } from '../../services/AppSettings.service';
 /**
  * Generated class for the FoodStallPage page.
  *
@@ -15,26 +17,27 @@ import { OrderPage } from '../order/order';
   templateUrl: 'food-stall.html',
 })
 export class FoodStallPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  menuList:any = [];
+  foodStallObj:any = {};
+  baseUrl:string = AppSettings.API_ENDPOINT;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public authHttp: AuthHttp) {
+    this.foodStallObj = navParams.data.foodStallObj;
+    this.getFoodStallList();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FoodStallPage');
   }
-  items = [
-    { name: 'Pokémon Yellow', price: 5.20},
-    { name: 'Super Metroid', price: 5.20},
-    { name: 'Mega Man X', price: 5.20},
-    { name: 'Pac-Man', price: 5.20},
-    { name: 'Super Mario World', price: 5.20},
-    { name: 'Street Fighter II', price: 5.20},
-    { name: 'Half Life', price: 5.20},
-    { name: 'Final Fantasy VII', price: 5.20},
-    { name: 'Star Fox', price: 5.20},
-    { name: 'Tetris', price: 5.20},
-    { name: 'Donkey Kong III', price: 5.20}
-  ];
+  getFoodStallList(){
+
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    this.authHttp.get(`${this.baseUrl}/api/menu/${this.foodStallObj.id}`,options).subscribe(res => {
+      console.log("......................",res.json());
+      this.menuList = res.json();
+
+    });
+  }
   itemSelected = function(item){
     console.log(item);
     this.onAddToCart();
