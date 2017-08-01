@@ -68,10 +68,9 @@ LocationPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'page-location',template:/*ion-inline-start:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/location/location.html"*/'<!--\n  Generated template for the LocationPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Location</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="cards-bg">\n  <ion-card class="map">\n    <img src="assets/map.png"/>\n    <div class="card-title">Your Location</div>\n    <div class="card-subtitle">144 Ny, 16545</div>\n  </ion-card>\n  <div padding>\n    <button ion-button color="secondary" full>Change Location</button>\n  </div>\n  <ion-card (click)="onSelectLocation(item)" *ngFor="let item of foodCenterList; let i = index">\n    <img src="{{baseUrl + item.imageUrl}}"/>\n    <ion-card-content>\n      <ion-card-title text-center>\n        {{item.name}}\n      </ion-card-title>\n    </ion-card-content>\n  </ion-card>\n\n</ion-content>\n'/*ion-inline-end:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/location/location.html"*/,
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4_angular2_jwt__["AuthHttp"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_angular2_jwt__["AuthHttp"]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4_angular2_jwt__["AuthHttp"]])
 ], LocationPage);
 
-var _a, _b, _c;
 //# sourceMappingURL=location.js.map
 
 /***/ }),
@@ -142,10 +141,9 @@ FoodCenterPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'page-food-center',template:/*ion-inline-start:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/food-center/food-center.html"*/'<!--\n  Generated template for the FoodCenterPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Food-center</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-card>\n    <img src="assets/map.png"/>\n    <div class="card-title">{{foodCenterObj.name}}</div>\n    <div class="card-subtitle">{{foodStallList.length}} STALLS</div>\n  </ion-card>\n  <div>\n    <p text-center>\n     {{foodCenterObj.hours}}\n    </p>\n    <p text-center>\n      {{foodCenterObj.address}}\n    </p>\n  </div>\n  <ion-grid>\n    <ion-row>\n      <ion-col col-6  *ngFor="let item of foodStallList; let i = index">\n        <div text-center (click)="onSelectFoodCenter(item)">\n          <img src="{{baseUrl + item.imageUrl}}" alt=""/>\n          <h3 >{{item.name}}</h3>\n          <p>{{item.type}} </p>\n        </div>\n      </ion-col>\n    </ion-row>\n\n\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/food-center/food-center.html"*/,
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4_angular2_jwt__["AuthHttp"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_angular2_jwt__["AuthHttp"]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4_angular2_jwt__["AuthHttp"]])
 ], FoodCenterPage);
 
-var _a, _b, _c;
 //# sourceMappingURL=food-center.js.map
 
 /***/ }),
@@ -764,8 +762,7 @@ var MyApp = (function () {
         this.platform = platform;
         this.statusBar = statusBar;
         this.splashScreen = splashScreen;
-        //rootPage: any = WelcomePage;
-        this.rootPage = __WEBPACK_IMPORTED_MODULE_9__pages_select_store_select_store__["a" /* SelectStorePage */];
+        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_welcome_welcome__["a" /* WelcomePage */];
         this.initializeApp();
         // used for an example of ngFor and navigation
         this.pages = [
@@ -800,15 +797,14 @@ var MyApp = (function () {
 }());
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Nav */]),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Nav */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Nav */]) === "function" && _a || Object)
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Nav */])
 ], MyApp.prototype, "nav", void 0);
 MyApp = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"/home/mahfuz/ftech/halalonclick/mobile/src/app/app.html"*/'<ion-menu [content]="content">\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Menu</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        {{p.title}}\n      </button>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"/home/mahfuz/ftech/halalonclick/mobile/src/app/app.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
 ], MyApp);
 
-var _a, _b, _c, _d;
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
@@ -971,10 +967,9 @@ SelectStorePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'page-select-store',template:/*ion-inline-start:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/select-store/select-store.html"*/'<!--\n  Generated template for the SelectStorePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Select-store</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        <div text-center (click)="onSelectStore(\'halal\')">\n          <img padding src="assets/halal.png" alt=""/>\n          <h3>Halal Food Delivery</h3>\n        </div>\n      </ion-col>\n      <ion-col>\n        <div text-center (click)="onSelectStore(\'fresh\')">\n          <img padding src="assets/fresh.png" alt=""/>\n          <h3>Fresh Food</h3>\n        </div>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/select-store/select-store.html"*/,
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
 ], SelectStorePage);
 
-var _a, _b;
 //# sourceMappingURL=select-store.js.map
 
 /***/ }),
