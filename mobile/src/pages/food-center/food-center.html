@@ -19,50 +19,26 @@
 <ion-content>
   <ion-card>
     <img src="assets/map.png"/>
-    <div class="card-title">AIMAN CAFE</div>
-    <div class="card-subtitle">7 STALLS</div>
+    <div class="card-title">{{foodCenterObj.name}}</div>
+    <div class="card-subtitle">{{foodStallList.length}} STALLS</div>
   </ion-card>
   <div>
     <p text-center>
-      4"00PM - 9"00PM (Last Order At 8"30PM)
+     {{foodCenterObj.hours}}
     </p>
     <p text-center>
-      235, Jurong East St 21, Singapore 600235
+      {{foodCenterObj.address}}
     </p>
   </div>
   <ion-grid>
     <ion-row>
-      <ion-col col-6>
-        <div text-center (click)="onSelectFoodCenter()">
-          <img src="assets/food-rice.png" alt=""/>
-          <h3 >Breadgang SG</h3>
-          <p>Western, Mexican </p>
+      <ion-col col-6  *ngFor="let item of foodStallList; let i = index">
+        <div text-center (click)="onSelectFoodCenter(item)">
+          <img src="{{baseUrl + item.imageUrl}}" alt=""/>
+          <h3 >{{item.name}}</h3>
+          <p>{{item.type}} </p>
         </div>
       </ion-col>
-      <ion-col col-6>
-        <div text-center>
-          <img src="assets/food-salad.png" alt=""/>
-          <h3 >GW Chicken Rice</h3>
-          <p>Local, Chicken Rice</p>
-        </div>
-      </ion-col>
-      <ion-col col-6>
-        <div text-center>
-          <img src="assets/food-rice.png" alt=""/>
-          <h3 >Breadgang SG</h3>
-          <p>Western, Mexican </p>
-        </div>
-      </ion-col>
-      <ion-col col-6>
-        <div text-center>
-          <img src="assets/food-salad.png" alt=""/>
-          <h3 >GW Chicken Rice</h3>
-          <p>Local, Chicken Rice</p>
-        </div>
-      </ion-col>
-
-
-
     </ion-row>
 
 

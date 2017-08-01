@@ -22,8 +22,10 @@ export class SelectStorePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad SelectStorePage');
   }
-  onSelectStore() {
-    this.navCtrl.push(LocationPage);
+  onSelectStore(storeType) {
+    this.navCtrl.push(LocationPage,{
+      storeType:storeType
+    });
   }
 
 }

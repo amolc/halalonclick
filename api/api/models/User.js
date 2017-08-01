@@ -68,10 +68,10 @@ User.sync({force: true}).then(() => {
     // Table created
 
     return User.create({
-        email: 'mahfuz@halalonclick.com',
+        email: 'user@halalonclick.com',
         firstName: 'Mahfuzur',
         lastName: 'Rahman',
-        password: '1234'
+        password: 'user'
     });
 });
 module.exports = User;

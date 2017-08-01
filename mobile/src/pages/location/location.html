@@ -25,30 +25,11 @@
   <div padding>
     <button ion-button color="secondary" full>Change Location</button>
   </div>
-  <ion-card (click)="onSelectLocation()">
-    <img src="assets/fc-aiman-cafe.png"/>
+  <ion-card (click)="onSelectLocation(item)" *ngFor="let item of foodCenterList; let i = index">
+    <img src="{{baseUrl + item.imageUrl}}"/>
     <ion-card-content>
       <ion-card-title text-center>
-        Aiman cafe
-      </ion-card-title>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card>
-    <img src="assets/fc-orange.png"/>
-    <ion-card-content>
-      <ion-card-title text-center>
-        Orange Orange (F&B) Ltd
-      </ion-card-title>
-    </ion-card-content>
-
-  </ion-card>
-
-  <ion-card>
-    <img src="assets/fc-tong.png"/>
-    <ion-card-content>
-      <ion-card-title text-center>
-        Tong
+        {{item.name}}
       </ion-card-title>
     </ion-card-content>
   </ion-card>

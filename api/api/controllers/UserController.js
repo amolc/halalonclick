@@ -5,6 +5,8 @@ module.exports = {
         User.findOne({where: { id: req.uid}})
         .then(user => {
                 res.json(200, user);
+            }).catch(err => {
+                res.json(err);
             })
     }
 };

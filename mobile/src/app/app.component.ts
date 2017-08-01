@@ -23,6 +23,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = WelcomePage;
+  //rootPage: any = SelectStorePage;
 
   pages: Array<{title: string, component: any}>;
 
