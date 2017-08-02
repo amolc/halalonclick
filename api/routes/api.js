@@ -5,6 +5,7 @@ var userController = require('./../api/controllers/UserController');
 var foodCenterController = require('./../api/controllers/FoodCenterController');
 var foodStallController = require('./../api/controllers/FoodStallController');
 var menuController = require('./../api/controllers/MenuController');
+var cartController = require('./../api/controllers/CartController');
 var tokenParse = require('./../api/middleware/tokenParse');
 
 /* GET users listing. */
@@ -25,5 +26,8 @@ router.get('/food-stall/:foodCenterId', foodStallController.getFoodStallList);
 
 router.get('/menu/:foodStallId/details/:menuId', menuController.getMenu);
 router.get('/menu/:foodStallId', menuController.getMenuList);
+
+router.get('/get-cart', cartController.getCart);
+router.get('/set-cart', cartController.setCart);
 
 module.exports = router;
