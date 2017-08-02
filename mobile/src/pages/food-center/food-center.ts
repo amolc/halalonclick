@@ -22,7 +22,7 @@ export class FoodCenterPage {
   foodCenterObj:any = {};
   baseUrl:string = AppSettings.API_ENDPOINT;
   constructor(public navCtrl: NavController, public navParams: NavParams, public authHttp: AuthHttp) {
-    this.foodCenterObj = navParams.data.foodCenterObj;
+    this.foodCenterObj = navParams.data.foodCenterObj || {id:1};
     console.log(this.foodCenterObj );
 
     this.getFoodStallList();

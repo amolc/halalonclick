@@ -37,10 +37,15 @@
     <button ion-item *ngFor="let item of menuList" (click)="itemSelected(item)">
 
       <ion-row>
-        <ion-col col-4>{{ item.name }}</ion-col>
-        <ion-col col-2>-1+</ion-col>
+        <ion-col col-4><label for="">{{ item.name }}</label></ion-col>
+        <ion-col col-3>
+          <button ion-button color="light" small (click)="changeTravellers('adult','-')">-</button>
+          <button ion-button color="light" outline small >1</button>
+          <button ion-button color="light" small  (click)="changeTravellers('adult','+')">+</button>
+        </ion-col>
+
         <ion-col col-2>${{ item.price }}</ion-col>
-        <ion-col col-4><button color="primary" ion-button small round (click)="onAddToCart()">Add to card</button></ion-col>
+        <ion-col col-1><button color="primary" ion-button small round (click)="onAddToCart()">Add</button></ion-col>
       </ion-row>
     </button>
   </ion-list>

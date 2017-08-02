@@ -21,7 +21,7 @@ export class FoodStallPage {
   foodStallObj:any = {};
   baseUrl:string = AppSettings.API_ENDPOINT;
   constructor(public navCtrl: NavController, public navParams: NavParams, public authHttp: AuthHttp) {
-    this.foodStallObj = navParams.data.foodStallObj;
+    this.foodStallObj = navParams.data.foodStallObj  || {id:1};
     this.getFoodStallList();
   }
 
@@ -40,7 +40,6 @@ export class FoodStallPage {
   }
   itemSelected = function(item){
     console.log(item);
-    this.onAddToCart();
   }
   onAddToCart= function(){
     this.navCtrl.push(OrderPage);
