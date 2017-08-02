@@ -197,6 +197,10 @@ var FoodStallPage = (function () {
         this.onAddToCart = function () {
             this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__order_order__["a" /* OrderPage */]);
         };
+        this.increaseItem = function (item) {
+        };
+        this.decreaseItem = function (item) {
+        };
         this.foodStallObj = navParams.data.foodStallObj || { id: 1 };
         this.getFoodStallList();
     }
@@ -216,11 +220,12 @@ var FoodStallPage = (function () {
 }());
 FoodStallPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-food-stall',template:/*ion-inline-start:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/food-stall/food-stall.html"*/'<!--\n  Generated template for the FoodStallPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Food-stall</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-card>\n    <img src="assets/bg-food.png"/>\n    <div class="card-title">{{foodStallObj.name}}</div>\n    <div class="card-subtitle">{{foodStallObj.foodType}}</div>\n  </ion-card>\n  <div>\n    <p text-center>\n      {{foodStallObj.hours}}\n    </p>\n    <p text-center>\n      {{foodStallObj.address}}\n    </p>\n  </div>\n\n<!--</ion-content>-->\n<!--<ion-content>-->\n  <ion-list no-lines>\n    <button ion-item *ngFor="let item of menuList" (click)="itemSelected(item)">\n\n      <ion-row>\n        <ion-col col-4><label for="">{{ item.name }}</label></ion-col>\n        <ion-col col-3>\n          <button ion-button color="light" small (click)="changeTravellers(\'adult\',\'-\')">-</button>\n          <button ion-button color="light" outline small >1</button>\n          <button ion-button color="light" small  (click)="changeTravellers(\'adult\',\'+\')">+</button>\n        </ion-col>\n\n        <ion-col col-2>${{ item.price }}</ion-col>\n        <ion-col col-1><button color="primary" ion-button small round (click)="onAddToCart()">Add</button></ion-col>\n      </ion-row>\n    </button>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/food-stall/food-stall.html"*/,
+        selector: 'page-food-stall',template:/*ion-inline-start:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/food-stall/food-stall.html"*/'<!--\n  Generated template for the FoodStallPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Food-stall</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-card>\n    <img src="assets/bg-food.png"/>\n    <div class="card-title">{{foodStallObj.name}}</div>\n    <div class="card-subtitle">{{foodStallObj.foodType}}</div>\n  </ion-card>\n  <div>\n    <p text-center>\n      {{foodStallObj.hours}}\n    </p>\n    <p text-center>\n      {{foodStallObj.address}}\n    </p>\n  </div>\n\n<!--</ion-content>-->\n<!--<ion-content>-->\n  <ion-list no-lines>\n    <button ion-item *ngFor="let item of menuList" (click)="itemSelected(item)">\n\n      <ion-row>\n        <ion-col col-4><label for="">{{ item.name }}</label></ion-col>\n        <ion-col col-3>\n          <button ion-button color="light" small (click)="increaseItem(item)">-</button>\n          <button ion-button color="light" outline small >1</button>\n          <button ion-button color="light" small  (click)="decreaseItem(item)">+</button>\n        </ion-col>\n\n        <ion-col col-2>${{ item.price }}</ion-col>\n        <ion-col col-1><button color="primary" ion-button small round (click)="onAddToCart()">Add</button></ion-col>\n      </ion-row>\n    </button>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/food-stall/food-stall.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4_angular2_jwt__["AuthHttp"]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4_angular2_jwt__["AuthHttp"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_angular2_jwt__["AuthHttp"]) === "function" && _c || Object])
 ], FoodStallPage);
 
+var _a, _b, _c;
 //# sourceMappingURL=food-stall.js.map
 
 /***/ }),
@@ -970,8 +975,7 @@ var AppSettings = (function () {
     function AppSettings() {
     }
     Object.defineProperty(AppSettings, "API_ENDPOINT", {
-        //public static get API_ENDPOINT(): string { return 'http://80startups.com:3000'; }
-        get: function () { return 'http://localhost:3000'; },
+        get: function () { return 'http://80startups.com:3000'; },
         enumerable: true,
         configurable: true
     });

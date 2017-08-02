@@ -39,9 +39,9 @@
       <ion-row>
         <ion-col col-4><label for="">{{ item.name }}</label></ion-col>
         <ion-col col-3>
-          <button ion-button color="light" small (click)="changeTravellers('adult','-')">-</button>
+          <button ion-button color="light" small (click)="increaseItem(item)">-</button>
           <button ion-button color="light" outline small >1</button>
-          <button ion-button color="light" small  (click)="changeTravellers('adult','+')">+</button>
+          <button ion-button color="light" small  (click)="decreaseItem(item)">+</button>
         </ion-col>
 
         <ion-col col-2>${{ item.price }}</ion-col>

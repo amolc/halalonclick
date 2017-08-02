@@ -40,9 +40,15 @@ export class FoodStallPage {
   }
   itemSelected = function(item){
     console.log(item);
-  }
+  };
   onAddToCart= function(){
     this.navCtrl.push(OrderPage);
+
+  };
+  increaseItem = function(item){
+
+  };
+  decreaseItem = function(item){
 
   }
 }
