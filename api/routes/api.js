@@ -27,7 +27,9 @@ router.get('/food-stall/:foodCenterId', foodStallController.getFoodStallList);
 router.get('/menu/:foodStallId/details/:menuId', menuController.getMenu);
 router.get('/menu/:foodStallId', menuController.getMenuList);
 
-router.get('/get-cart', cartController.getCart);
-router.get('/set-cart', cartController.setCart);
+router.route('/cart')
+    .get(cartController.getCart)
+    .post(cartController.addToCart)
+    .delete(cartController.removeFromCart);
 
 module.exports = router;

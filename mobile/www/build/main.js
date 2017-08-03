@@ -237,6 +237,10 @@ FoodStallPage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__checkout_checkout__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angular2_jwt__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angular2_jwt___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angular2_jwt__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_AppSettings_service__ = __webpack_require__(55);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -249,6 +253,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
 /**
  * Generated class for the OrderPage page.
  *
@@ -256,9 +263,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * on Ionic pages and navigation.
  */
 var OrderPage = (function () {
-    function OrderPage(navCtrl, navParams) {
+    function OrderPage(navCtrl, navParams, authHttp) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.authHttp = authHttp;
+        this.orderList = [];
+        this.baseUrl = __WEBPACK_IMPORTED_MODULE_5__services_AppSettings_service__["a" /* AppSettings */].API_ENDPOINT;
         this.items = [
             { name: 'Pokémon Yellow', price: 5.20 },
             { name: 'Super Metroid', price: 5.20 },
@@ -271,7 +281,17 @@ var OrderPage = (function () {
         this.onCheckout = function () {
             this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__checkout_checkout__["a" /* CheckoutPage */]);
         };
+        this.getOrderList();
     }
+    OrderPage.prototype.getOrderList = function () {
+        var _this = this;
+        var headers = new __WEBPACK_IMPORTED_MODULE_3__angular_http__["Headers"]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_3__angular_http__["RequestOptions"]({ headers: headers });
+        this.authHttp.get(this.baseUrl + "/api/cart", options).subscribe(function (res) {
+            console.log("orderList", res.json());
+            _this.orderList = res.json();
+        });
+    };
     OrderPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad OrderPage');
     };
@@ -281,9 +301,10 @@ OrderPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'page-order',template:/*ion-inline-start:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/order/order.html"*/'<!--\n  Generated template for the OrderPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Order</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-card>\n    <img src="assets/bg-food.png"/>\n    <div class="card-title">Your Order</div>\n  </ion-card>\n  <div>\n    <p text-center>\n      25-30 minutes\n    </p>\n    <p text-center>\n      116, Jurong East Street 21, Singapore 600116\n    </p>\n  </div>\n\n  <!--</ion-content>-->\n  <!--<ion-content>-->\n  <ion-card>\n    <ion-card-header>\n      Order Summary\n    </ion-card-header>\n    <ion-list no-lines>\n      <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">\n\n        <ion-row>\n          <ion-col col-4>{{ item.name }}</ion-col>\n          <ion-col col-2>-1+</ion-col>\n          <ion-col col-4><button color="danger" ion-button small round>remove</button></ion-col>\n          <ion-col col-2 text-right>${{ item.price }}</ion-col>\n        </ion-row>\n      </button>\n      <button ion-item>\n\n        <ion-row >\n          <ion-col text-right offset-6 col-4>\n            Subtotal\n          </ion-col>\n          <ion-col text-right col-2>$105.50</ion-col>\n        </ion-row>\n        <ion-row >\n          <ion-col text-right offset-6 col-4>\n            Delivery Fee\n          </ion-col>\n          <ion-col text-right col-2>$5.00</ion-col>\n        </ion-row>\n        <hr/>\n        <ion-row >\n          <ion-col text-right offset-6 col-4>\n            <b>Total</b>\n          </ion-col>\n          <ion-col text-right col-2><b>$110.0</b></ion-col>\n        </ion-row>\n      </button>\n    </ion-list>\n  </ion-card>\n  <div padding>\n    <button ion-button color="secondary" full (click)="onCheckout()">Proceed to checkout</button>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/order/order.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4_angular2_jwt__["AuthHttp"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_angular2_jwt__["AuthHttp"]) === "function" && _c || Object])
 ], OrderPage);
 
+var _a, _b, _c;
 //# sourceMappingURL=order.js.map
 
 /***/ }),
