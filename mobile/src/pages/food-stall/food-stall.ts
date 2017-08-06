@@ -34,9 +34,10 @@ export class FoodStallPage {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     this.authHttp.get(`${this.baseUrl}/api/menu/${this.foodStallObj.id}`,options).subscribe(res => {
-      console.log("......................",res.json());
       this.menuList = res.json();
-
+      this.menuList.forEach(row => {
+        row.total = 1;
+      })
     });
   }
   itemSelected = function(item){
@@ -51,7 +52,7 @@ export class FoodStallPage {
           menuId: item.id,
           name: item.name,
           price: item.price,
-          totalOrder: 1
+          totalOrder: item.total
         });
 
         let headers = new Headers({ 'Content-Type': 'application/json' });
@@ -87,7 +88,7 @@ export class FoodStallPage {
   presentConfirm = function(cb) {
     let alert = this.alertCtrl.create({
       title: 'Confirm purchase',
-      message: 'Do you want to buy this book?',
+      message: 'Do you want to add this item?',
       buttons: [
         {
           text: 'Cancel',
@@ -98,7 +99,7 @@ export class FoodStallPage {
           }
         },
         {
-          text: 'Buy',
+          text: 'Add',
           handler: () => {
             console.log('Buy clicked');
             cb(true);
@@ -108,19 +109,14 @@ export class FoodStallPage {
     });
     alert.present();
   }
-  openModal = function(data) {
+  openModal = function(itemObj) {
 
-    let modal = this.modalCtrl.create(CounterModalPage, {data:data});
+    let modal = this.modalCtrl.create(CounterModalPage, {data:itemObj});
     modal.present();
 
     modal.onDidDismiss((data: any) => {
       if (data) {
-        //if(fromOrTo=="from" && data != 'cancel'){
-        //  this.searchObj.origin = data.ac;
-        //}
-        //else if(fromOrTo=="to" && data != 'cancel'){
-        //  this.searchObj.destination = data.ac;
-        //}
+        itemObj.total = data;
       }
     });
   }

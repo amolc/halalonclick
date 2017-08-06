@@ -206,7 +206,7 @@ var FoodStallPage = (function () {
                         menuId: item.id,
                         name: item.name,
                         price: item.price,
-                        totalOrder: 1
+                        totalOrder: item.total
                     });
                     var headers = new __WEBPACK_IMPORTED_MODULE_3__angular_http__["Headers"]({ 'Content-Type': 'application/json' });
                     var options = new __WEBPACK_IMPORTED_MODULE_3__angular_http__["RequestOptions"]({ headers: headers });
@@ -223,7 +223,7 @@ var FoodStallPage = (function () {
         this.presentConfirm = function (cb) {
             var alert = this.alertCtrl.create({
                 title: 'Confirm purchase',
-                message: 'Do you want to buy this book?',
+                message: 'Do you want to add this item?',
                 buttons: [
                     {
                         text: 'Cancel',
@@ -234,7 +234,7 @@ var FoodStallPage = (function () {
                         }
                     },
                     {
-                        text: 'Buy',
+                        text: 'Add',
                         handler: function () {
                             console.log('Buy clicked');
                             cb(true);
@@ -244,17 +244,12 @@ var FoodStallPage = (function () {
             });
             alert.present();
         };
-        this.openModal = function (data) {
-            var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_2__counter_modal_counter_modal__["a" /* CounterModalPage */], { data: data });
+        this.openModal = function (itemObj) {
+            var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_2__counter_modal_counter_modal__["a" /* CounterModalPage */], { data: itemObj });
             modal.present();
             modal.onDidDismiss(function (data) {
                 if (data) {
-                    //if(fromOrTo=="from" && data != 'cancel'){
-                    //  this.searchObj.origin = data.ac;
-                    //}
-                    //else if(fromOrTo=="to" && data != 'cancel'){
-                    //  this.searchObj.destination = data.ac;
-                    //}
+                    itemObj.total = data;
                 }
             });
         };
@@ -269,8 +264,10 @@ var FoodStallPage = (function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_3__angular_http__["Headers"]({ 'Content-Type': 'application/json' });
         var options = new __WEBPACK_IMPORTED_MODULE_3__angular_http__["RequestOptions"]({ headers: headers });
         this.authHttp.get(this.baseUrl + "/api/menu/" + this.foodStallObj.id, options).subscribe(function (res) {
-            console.log("......................", res.json());
             _this.menuList = res.json();
+            _this.menuList.forEach(function (row) {
+                row.total = 1;
+            });
         });
     };
     FoodStallPage.prototype.showAlert = function (title, message) {
@@ -291,11 +288,12 @@ var FoodStallPage = (function () {
 }());
 FoodStallPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-food-stall',template:/*ion-inline-start:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/food-stall/food-stall.html"*/'<!--\n  Generated template for the FoodStallPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Food-stall</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-card>\n    <img src="assets/bg-food.png"/>\n    <div class="card-title">{{foodStallObj.name}}</div>\n    <div class="card-subtitle">{{foodStallObj.foodType}}</div>\n  </ion-card>\n  <div>\n    <p text-center>\n      {{foodStallObj.hours}}\n    </p>\n    <p text-center>\n      {{foodStallObj.address}}\n    </p>\n  </div>\n\n<!--</ion-content>-->\n<!--<ion-content>-->\n  <ion-item>\n    <ion-select>\n      <ion-option value="f">Female</ion-option>\n      <ion-option value="m">Male</ion-option>\n    </ion-select>\n  </ion-item>\n\n  <ion-list no-lines>\n    <div  *ngFor="let item of menuList" >\n\n      <ion-row>\n        <ion-col col-5><div>{{ item.name }}</div></ion-col>\n\n        <ion-col col-2><div><button color="primary" ion-button small round (click)="openModal(item.total)">{{item.total}}</button></div></ion-col>\n\n        <ion-col col-2><div>${{ item.price }}</div></ion-col>\n        <ion-col col-2><div><button color="primary" ion-button small round (click)="onAddToCart(item)">Add</button></div></ion-col>\n      </ion-row>\n    </div>\n\n\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/food-stall/food-stall.html"*/,
+        selector: 'page-food-stall',template:/*ion-inline-start:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/food-stall/food-stall.html"*/'<!--\n  Generated template for the FoodStallPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Food-stall</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-card>\n    <img src="assets/bg-food.png"/>\n    <div class="card-title">{{foodStallObj.name}}</div>\n    <div class="card-subtitle">{{foodStallObj.foodType}}</div>\n  </ion-card>\n  <div>\n    <p text-center>\n      {{foodStallObj.hours}}\n    </p>\n    <p text-center>\n      {{foodStallObj.address}}\n    </p>\n  </div>\n\n\n  <ion-list no-lines>\n    <div  *ngFor="let item of menuList" >\n\n      <ion-row>\n        <ion-col col-5><div>{{ item.name }}</div></ion-col>\n\n        <ion-col col-2><div><button color="primary" ion-button small round (click)="openModal(item)">{{item.total}} &nbsp;<ion-icon name="arrow-down"></ion-icon></button></div></ion-col>\n\n        <ion-col col-2><div>${{ item.price*item.total | number:\'1.2-2\' }}</div></ion-col>\n        <ion-col col-2><div><button color="primary" ion-button small round (click)="onAddToCart(item)">Add</button></div></ion-col>\n      </ion-row>\n    </div>\n\n\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/food-stall/food-stall.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4_angular2_jwt__["AuthHttp"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* ModalController */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4_angular2_jwt__["AuthHttp"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_angular2_jwt__["AuthHttp"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* ModalController */]) === "function" && _e || Object])
 ], FoodStallPage);
 
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=food-stall.js.map
 
 /***/ }),
@@ -593,22 +591,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * on Ionic pages and navigation.
  */
 var CounterModalPage = (function () {
-    function CounterModalPage(navCtrl, navParams) {
+    function CounterModalPage(navCtrl, navParams, viewCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.viewCtrl = viewCtrl;
+        this.counterArray = [];
+        for (var i = 0; i < 10; i++) {
+            this.counterArray[i] = i + 1;
+        }
     }
     CounterModalPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad CounterModalPage');
+    };
+    CounterModalPage.prototype.dismiss = function (data) {
+        // using the injected ViewController this page
+        // can "dismiss" itself and pass back data
+        this.viewCtrl.dismiss(false);
+    };
+    CounterModalPage.prototype.selectItem = function (data) {
+        // using the injected ViewController this page
+        // can "dismiss" itself and pass back data
+        this.viewCtrl.dismiss(data);
     };
     return CounterModalPage;
 }());
 CounterModalPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-counter-modal',template:/*ion-inline-start:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/counter-modal/counter-modal.html"*/'<!--\n  Generated template for the CounterModalPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>counterModal</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/counter-modal/counter-modal.html"*/,
+        selector: 'page-counter-modal',template:/*ion-inline-start:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/counter-modal/counter-modal.html"*/'<ion-header>\n  <ion-toolbar>\n    <ion-title>\n      Select Total Order\n    </ion-title>\n\n    <ion-buttons start>\n      <button ion-button (click)="dismiss()">\n        <span color="primary" showWhen="ios">Cancel</span>\n        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <button ion-item *ngFor="let item of counterArray" (click)="selectItem(item)">\n      {{item}}\n    </button>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/counter-modal/counter-modal.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ViewController */]) === "function" && _c || Object])
 ], CounterModalPage);
 
+var _a, _b, _c;
 //# sourceMappingURL=counter-modal.js.map
 
 /***/ }),
@@ -682,7 +696,7 @@ var OrderPage = (function () {
         this.presentConfirm = function (cb) {
             var alert = this.alertCtrl.create({
                 title: 'Confirm purchase',
-                message: 'Do you want to buy this book?',
+                message: 'Do you want to remove this item?',
                 buttons: [
                     {
                         text: 'Cancel',
@@ -693,7 +707,7 @@ var OrderPage = (function () {
                         }
                     },
                     {
-                        text: 'Buy',
+                        text: 'Remove',
                         handler: function () {
                             console.log('Buy clicked');
                             cb(true);
@@ -702,6 +716,14 @@ var OrderPage = (function () {
                 ]
             });
             alert.present();
+        };
+        this.getSubTotal = function () {
+            return this.orderList.reduce(function (total, item) {
+                return total + item.price * item.totalOrder;
+            }, 0);
+        };
+        this.getDeliveryCharge = function () {
+            return 5;
         };
         this.getOrderList();
     }
@@ -728,11 +750,12 @@ var OrderPage = (function () {
 }());
 OrderPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-order',template:/*ion-inline-start:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/order/order.html"*/'<!--\n  Generated template for the OrderPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Order</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-card>\n    <img src="assets/bg-food.png"/>\n    <div class="card-title">Your Order</div>\n  </ion-card>\n  <div>\n    <p text-center>\n      25-30 minutes\n    </p>\n    <p text-center>\n      116, Jurong East Street 21, Singapore 600116\n    </p>\n  </div>\n\n  <!--</ion-content>-->\n  <!--<ion-content>-->\n  <ion-card>\n    <ion-card-header>\n      Order Summary\n    </ion-card-header>\n    <ion-list no-lines>\n      <ion-grid ion-item *ngFor="let item of orderList">\n\n        <ion-row>\n          <ion-col col-4>{{ item.name }}</ion-col>\n          <ion-col col-2>-1+</ion-col>\n          <ion-col col-4><button color="danger" ion-button small round (click)="removeOrderItem(item)">remove</button></ion-col>\n          <ion-col col-2 text-right>${{ item.price }}</ion-col>\n        </ion-row>\n      </ion-grid>\n      <button ion-item>\n\n        <ion-row >\n          <ion-col text-right offset-6 col-4>\n            Subtotal\n          </ion-col>\n          <ion-col text-right col-2>$105.50</ion-col>\n        </ion-row>\n        <ion-row >\n          <ion-col text-right offset-6 col-4>\n            Delivery Fee\n          </ion-col>\n          <ion-col text-right col-2>$5.00</ion-col>\n        </ion-row>\n        <hr/>\n        <ion-row >\n          <ion-col text-right offset-6 col-4>\n            <b>Total</b>\n          </ion-col>\n          <ion-col text-right col-2><b>$110.0</b></ion-col>\n        </ion-row>\n      </button>\n    </ion-list>\n  </ion-card>\n  <div padding>\n    <button ion-button color="secondary" full (click)="onCheckout()">Proceed to checkout</button>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/order/order.html"*/,
+        selector: 'page-order',template:/*ion-inline-start:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/order/order.html"*/'<!--\n  Generated template for the OrderPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Order</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-card>\n    <img src="assets/bg-food.png"/>\n    <div class="card-title">Your Order</div>\n  </ion-card>\n  <div>\n    <p text-center>\n      25-30 minutes\n    </p>\n    <p text-center>\n      116, Jurong East Street 21, Singapore 600116\n    </p>\n  </div>\n\n  <!--</ion-content>-->\n  <!--<ion-content>-->\n  <ion-card>\n    <ion-card-header>\n      Order Summary\n    </ion-card-header>\n    <ion-list no-lines>\n      <ion-grid ion-item *ngFor="let item of orderList">\n\n        <ion-row>\n          <ion-col col-4>{{ item.name }}</ion-col>\n          <ion-col col-2>{{ item.total }}</ion-col>\n          <ion-col col-4><button color="danger" ion-button small round (click)="removeOrderItem(item)">remove</button></ion-col>\n          <ion-col col-2 text-right>${{ item.price* item.totalOrder }}</ion-col>\n        </ion-row>\n      </ion-grid>\n      <button ion-item>\n\n        <ion-row >\n          <ion-col text-right offset-6 col-4>\n            Subtotal\n          </ion-col>\n          <ion-col text-right col-2>${{getSubTotal()}}</ion-col>\n        </ion-row>\n        <ion-row >\n          <ion-col text-right offset-6 col-4>\n            Delivery Fee\n          </ion-col>\n          <ion-col text-right col-2>${{getDeliveryCharge()}}</ion-col>\n        </ion-row>\n        <hr/>\n        <ion-row >\n          <ion-col text-right offset-6 col-4>\n            <b>Total</b>\n          </ion-col>\n          <ion-col text-right col-2><b>${{getSubTotal() + getDeliveryCharge()}}</b></ion-col>\n        </ion-row>\n      </button>\n    </ion-list>\n  </ion-card>\n  <div padding>\n    <button ion-button color="secondary" full (click)="onCheckout()">Proceed to checkout</button>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/mahfuz/ftech/halalonclick/mobile/src/pages/order/order.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4_angular2_jwt__["AuthHttp"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4_angular2_jwt__["AuthHttp"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_angular2_jwt__["AuthHttp"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _d || Object])
 ], OrderPage);
 
+var _a, _b, _c, _d;
 //# sourceMappingURL=order.js.map
 
 /***/ }),

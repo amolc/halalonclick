@@ -31,14 +31,6 @@
     </p>
   </div>
 
-<!--</ion-content>-->
-<!--<ion-content>-->
-  <ion-item>
-    <ion-select>
-      <ion-option value="f">Female</ion-option>
-      <ion-option value="m">Male</ion-option>
-    </ion-select>
-  </ion-item>
 
   <ion-list no-lines>
     <div  *ngFor="let item of menuList" >
@@ -46,9 +38,9 @@
       <ion-row>
         <ion-col col-5><div>{{ item.name }}</div></ion-col>
 
-        <ion-col col-2><div><button color="primary" ion-button small round (click)="openModal(item.total)">{{item.total}}</button></div></ion-col>
+        <ion-col col-2><div><button color="primary" ion-button small round (click)="openModal(item)">{{item.total}} &nbsp;<ion-icon name="arrow-down"></ion-icon></button></div></ion-col>
 
-        <ion-col col-2><div>${{ item.price }}</div></ion-col>
+        <ion-col col-2><div>${{ item.price*item.total | number:'1.2-2' }}</div></ion-col>
         <ion-col col-2><div><button color="primary" ion-button small round (click)="onAddToCart(item)">Add</button></div></ion-col>
       </ion-row>
     </div>

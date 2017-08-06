@@ -72,7 +72,7 @@ export class OrderPage {
   presentConfirm = function(cb) {
     let alert = this.alertCtrl.create({
       title: 'Confirm purchase',
-      message: 'Do you want to buy this book?',
+      message: 'Do you want to remove this item?',
       buttons: [
         {
           text: 'Cancel',
@@ -83,7 +83,7 @@ export class OrderPage {
           }
         },
         {
-          text: 'Buy',
+          text: 'Remove',
           handler: () => {
             console.log('Buy clicked');
             cb(true);
@@ -92,5 +92,13 @@ export class OrderPage {
       ]
     });
     alert.present();
+  }
+  getSubTotal = function () {
+    return this.orderList.reduce(function (total, item) {
+      return total + item.price* item.totalOrder;
+    },0)
+  }
+  getDeliveryCharge = function () {
+    return 5
   }
 }

@@ -41,9 +41,9 @@
 
         <ion-row>
           <ion-col col-4>{{ item.name }}</ion-col>
-          <ion-col col-2>-1+</ion-col>
+          <ion-col col-2>{{ item.total }}</ion-col>
           <ion-col col-4><button color="danger" ion-button small round (click)="removeOrderItem(item)">remove</button></ion-col>
-          <ion-col col-2 text-right>${{ item.price }}</ion-col>
+          <ion-col col-2 text-right>${{ item.price* item.totalOrder }}</ion-col>
         </ion-row>
       </ion-grid>
       <button ion-item>
@@ -52,20 +52,20 @@
           <ion-col text-right offset-6 col-4>
             Subtotal
           </ion-col>
-          <ion-col text-right col-2>$105.50</ion-col>
+          <ion-col text-right col-2>${{getSubTotal()}}</ion-col>
         </ion-row>
         <ion-row >
           <ion-col text-right offset-6 col-4>
             Delivery Fee
           </ion-col>
-          <ion-col text-right col-2>$5.00</ion-col>
+          <ion-col text-right col-2>${{getDeliveryCharge()}}</ion-col>
         </ion-row>
         <hr/>
         <ion-row >
           <ion-col text-right offset-6 col-4>
             <b>Total</b>
           </ion-col>
-          <ion-col text-right col-2><b>$110.0</b></ion-col>
+          <ion-col text-right col-2><b>${{getSubTotal() + getDeliveryCharge()}}</b></ion-col>
         </ion-row>
       </button>
     </ion-list>
