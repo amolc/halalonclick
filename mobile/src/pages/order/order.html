@@ -37,15 +37,15 @@
       Order Summary
     </ion-card-header>
     <ion-list no-lines>
-      <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
+      <ion-grid ion-item *ngFor="let item of orderList">
 
         <ion-row>
           <ion-col col-4>{{ item.name }}</ion-col>
           <ion-col col-2>-1+</ion-col>
-          <ion-col col-4><button color="danger" ion-button small round>remove</button></ion-col>
+          <ion-col col-4><button color="danger" ion-button small round (click)="removeOrderItem(item)">remove</button></ion-col>
           <ion-col col-2 text-right>${{ item.price }}</ion-col>
         </ion-row>
-      </button>
+      </ion-grid>
       <button ion-item>
 
         <ion-row >

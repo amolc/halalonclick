@@ -23,6 +23,7 @@ import { OrderPage } from '../pages/order/order';
 import { SelectStorePage } from '../pages/select-store/select-store';
 import { FoodCenterPage } from '../pages/food-center/food-center';
 import { FoodStallPage } from '../pages/food-stall/food-stall';
+import { CounterModalPage } from '../pages/counter-modal/counter-modal';
 //import { MapPage } from '../pages/map/map';
 
 
@@ -58,7 +59,8 @@ export function getAuthHttp(http) {
     OrderPage,
     SelectStorePage,
     FoodCenterPage,
-    FoodStallPage
+    FoodStallPage,
+    CounterModalPage
   ],
   imports: [
     BrowserModule,
@@ -78,7 +80,8 @@ export function getAuthHttp(http) {
     OrderPage,
     SelectStorePage,
     FoodCenterPage,
-    FoodStallPage
+    FoodStallPage,
+    CounterModalPage
   ],
   providers: [
     {

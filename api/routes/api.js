@@ -29,7 +29,7 @@ router.get('/menu/:foodStallId', menuController.getMenuList);
 
 router.route('/cart')
     .get(cartController.getCart)
-    .post(cartController.addToCart)
+    .post(tokenParse, cartController.addToCart)
     .delete(cartController.removeFromCart);
 
 module.exports = router;

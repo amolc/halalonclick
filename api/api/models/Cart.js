@@ -17,8 +17,11 @@ const Cart = sequelize.define('cart', {
     totalOrder: {
         type: Sequelize.INTEGER
     },
-    cartInfo: {
+    name: {
         type: Sequelize.STRING
+    },
+    price: {
+        type: Sequelize.INTEGER
     }
 });
 

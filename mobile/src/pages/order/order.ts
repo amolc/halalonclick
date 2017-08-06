@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 
 import { CheckoutPage } from '../checkout/checkout';
 
@@ -20,7 +20,7 @@ import { AppSettings } from '../../services/AppSettings.service';
 export class OrderPage {
   orderList:any = [];
   baseUrl:string = AppSettings.API_ENDPOINT;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public authHttp: AuthHttp) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public authHttp: AuthHttp, public alertCtrl: AlertController) {
     this.getOrderList();
   }
   getOrderList(){
@@ -48,5 +48,49 @@ export class OrderPage {
   onCheckout = function(){
     this.navCtrl.push(CheckoutPage);
 
+  };
+  removeOrderItem = function (item) {
+    this.presentConfirm(ok => {
+      if(ok){
+        this.removeOrderFromList(item.id, status => {
+          if(status){
+            this.orderList.splice(item, 1);
+          }
+        })
+      }
+    });
+    console.log("==", item)
+
+  };
+  removeOrderFromList(id, cb){
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    this.authHttp.delete(`${this.baseUrl}/api/cart?order_id=${id}`, options).subscribe(res => {
+      cb(res.json());
+    });
+  }
+  presentConfirm = function(cb) {
+    let alert = this.alertCtrl.create({
+      title: 'Confirm purchase',
+      message: 'Do you want to buy this book?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+            cb(false);
+          }
+        },
+        {
+          text: 'Buy',
+          handler: () => {
+            console.log('Buy clicked');
+            cb(true);
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 }

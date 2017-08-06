@@ -33,20 +33,26 @@
 
 <!--</ion-content>-->
 <!--<ion-content>-->
+  <ion-item>
+    <ion-select>
+      <ion-option value="f">Female</ion-option>
+      <ion-option value="m">Male</ion-option>
+    </ion-select>
+  </ion-item>
+
   <ion-list no-lines>
-    <button ion-item *ngFor="let item of menuList" (click)="itemSelected(item)">
+    <div  *ngFor="let item of menuList" >
 
       <ion-row>
-        <ion-col col-4><label for="">{{ item.name }}</label></ion-col>
-        <ion-col col-3>
-          <button ion-button color="light" small (click)="increaseItem(item)">-</button>
-          <button ion-button color="light" outline small >1</button>
-          <button ion-button color="light" small  (click)="decreaseItem(item)">+</button>
-        </ion-col>
+        <ion-col col-5><div>{{ item.name }}</div></ion-col>
 
-        <ion-col col-2>${{ item.price }}</ion-col>
-        <ion-col col-1><button color="primary" ion-button small round (click)="onAddToCart()">Add</button></ion-col>
+        <ion-col col-2><div><button color="primary" ion-button small round (click)="openModal(item.total)">{{item.total}}</button></div></ion-col>
+
+        <ion-col col-2><div>${{ item.price }}</div></ion-col>
+        <ion-col col-2><div><button color="primary" ion-button small round (click)="onAddToCart(item)">Add</button></div></ion-col>
       </ion-row>
-    </button>
+    </div>
+
+
   </ion-list>
 </ion-content>

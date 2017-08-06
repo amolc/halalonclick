@@ -2,7 +2,8 @@ var Cart = require('./../models/Cart');
 
 module.exports = {
     getCart: function (req, res) {
-        Cart.findAll({where: {userId: req.body.userId}})
+        //Cart.findAll({where: {userId: req.uid}})
+        Cart.findAll()
             .then(data => {
                 res.status(200).json(data);
             })
@@ -11,6 +12,8 @@ module.exports = {
     addToCart: function (req, res) {
         var cartObj = {
             userId: req.body.userId,
+            name:req.body.name,
+            price:req.body.price,
             foodCenterId: req.body.foodCenterId,
             foodStallId: req.body.foodStallId,
             menuId: req.body.menuId,
@@ -26,9 +29,8 @@ module.exports = {
 
     },
     removeFromCart: function (req, res) {
-
         Cart.destroy({
-            where: { id: req.body.id}
+            where: { id: req.query.order_id}
         })
             .then(data => {
                 res.json(data);
