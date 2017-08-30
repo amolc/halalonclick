@@ -25328,3 +25328,13 @@ page-order ion-list ion-col {
 page-order ion-list ion-col button span {
   font-size: 10px !important;
 }
+
+.ion-page > ion-content {
+  background: #e8f4fc;
+}
+
+.welcome-img {
+  width: 70%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
